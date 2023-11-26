@@ -1,0 +1,15 @@
+class Solution(object):
+  def isValid(self, s):
+    """
+    :type s: str
+    :rtype: bool
+    """
+    d = {'(':')', '{':'}','[':']'}
+    stack = []
+    for i in s:  # iterating through each bracket in the given string 
+      if i in d: # if it a left bracket we append it to a stack else
+        stack.append(i)
+      elif len(stack) == 0 or d[stack.pop()] !=i: # if it is a right bracket and len(stack) == 0 means there is no element to match the right bracket  
+        return False                               # check if the left bracket in stack matched with the current element in the string 
+    return len(stack) == 0                     # all the left brackets should be matched with right brackets
+           
